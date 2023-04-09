@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ListVideosResponse, PublicAPIError } from '../../types';
+import { ListVideosResponse, PublicAPIError } from '../../../types';
 import { type AxiosError } from 'axios';
 
-import api from '../../../../libs/axios';
+import api from '../../../../../libs/axios';
 
 import querystring from 'querystring';
 
