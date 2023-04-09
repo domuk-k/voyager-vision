@@ -4,6 +4,9 @@ import { type AxiosError } from 'axios';
 
 import api from '../../../../libs/axios';
 
+import querystring from 'querystring';
+import { log } from 'console';
+
 export default async function getVideos(
   req: NextApiRequest,
   res: NextApiResponse<ListVideosResponse | PublicAPIError>
@@ -11,8 +14,12 @@ export default async function getVideos(
   const query = req.query;
   const { indexId } = query;
 
+  delete query.indexId;
+
   try {
-    const response = await api.get(`/indexes/${indexId}/videos`);
+    const response = await api.get(
+      `/indexes/${indexId}/videos?${querystring.stringify(query)}`
+    );
 
     res.status(200).json(response.data);
   } catch (error) {
