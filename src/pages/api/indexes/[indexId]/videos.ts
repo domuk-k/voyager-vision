@@ -5,7 +5,6 @@ import { type AxiosError } from 'axios';
 import api from '../../../../libs/axios';
 
 import querystring from 'querystring';
-import { log } from 'console';
 
 export default async function getVideos(
   req: NextApiRequest,
