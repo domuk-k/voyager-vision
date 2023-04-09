@@ -1,8 +1,10 @@
 import { Video } from '@/pages/api/types';
 
+import VideoListItemLayout from './VideoListItemLayout';
+
 function IndexedVideoItem({ video }: { video: Video }) {
   return (
-    <ItemLayout>
+    <VideoListItemLayout>
       <li className="flex gap-3">
         <span>created_at</span>
         <span>{video.created_at}</span>
@@ -15,15 +17,7 @@ function IndexedVideoItem({ video }: { video: Video }) {
         <span>duration</span>
         <span>{video.metadata.duration}</span>
       </li>
-    </ItemLayout>
-  );
-}
-
-function ItemLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <ul className="max-w-sm flex flex-col gap-1 p-3 bg-white border border-gray-200 rounded-md">
-      {children}
-    </ul>
+    </VideoListItemLayout>
   );
 }
 
