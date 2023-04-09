@@ -8,7 +8,7 @@ export interface PageInfo {
 export interface PublicAPIError {
   code: string;
   message: string;
-  docs_url: string;
+  docs_url?: string;
 }
 
 interface VideoMetadata {

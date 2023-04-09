@@ -49,10 +49,12 @@ export default async function uploadVideo(
 
     return res.status(200).json({ _id: response._id });
   } catch (error) {
+    const errorData: PublicAPIError = (error as any).response.data;
+
     return res.status(400).json({
-      code: (error as PublicAPIError).code,
-      message: (error as PublicAPIError).message,
-      docs_url: 'TBD',
+      code: errorData.code,
+      message: errorData.message,
+      docs_url: errorData.docs_url,
     });
   }
 }

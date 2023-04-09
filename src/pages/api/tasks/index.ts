@@ -14,11 +14,12 @@ export default async function getTasks(
 
     res.status(200).json(response.data);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      code: (error as AxiosError).code ?? '500',
-      message: (error as AxiosError).message,
-      docs_url: 'TBD',
+    const errorData: PublicAPIError = (error as any).response.data;
+
+    return res.status(400).json({
+      code: errorData.code,
+      message: errorData.message,
+      docs_url: errorData.docs_url,
     });
   }
 }
