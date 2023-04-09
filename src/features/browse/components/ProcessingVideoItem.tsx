@@ -3,13 +3,10 @@ import { useQuery } from '@tanstack/react-query';
 
 import { GetProcessingTaskResponse } from '@/pages/api/types';
 import VideoListItemLayout from './VideoListItemLayout';
+import useTaskItem from '../hooks/useTaskItem';
 
 function ProcessingVideoItem({ taskId }: { taskId: string }) {
-  const { data } = useQuery<GetProcessingTaskResponse>(
-    ['tasks', taskId],
-    () => fetchTaskItem(taskId),
-    { enabled: !!taskId }
-  );
+  const { data } = useTaskItem(taskId);
 
   if (!data) return null;
 
@@ -34,12 +31,6 @@ function ProcessingVideoItem({ taskId }: { taskId: string }) {
         </li>
       </ul>
     </VideoListItemLayout>
-  );
-}
-
-function fetchTaskItem(taskId: string): Promise<GetProcessingTaskResponse> {
-  return axios<GetProcessingTaskResponse>(`/api/tasks/${taskId}`).then(
-    (res) => res.data
   );
 }
 
