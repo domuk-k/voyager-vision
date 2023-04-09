@@ -1,4 +1,5 @@
 import useIndexedVideoList from '../hooks/useIndexedVideoList';
+import { ErrorUI } from './ErrorUI';
 import IndexedVideoItem from './IndexedVideoItem';
 
 interface IndexedVideoListProps {
@@ -26,27 +27,6 @@ function IndexedVideoList({ indexId }: IndexedVideoListProps) {
         <IndexedVideoItem video={video} key={video._id} />
       ))}
     </ul>
-  );
-}
-
-function ErrorUI({
-  message,
-  onRefetch,
-}: {
-  message: string;
-  onRefetch: () => void;
-}) {
-  return (
-    <div>
-      <div>There is Error. Please try again later.</div>
-      <button type="button" onClick={onRefetch}>
-        Try Again
-      </button>
-      <details>
-        <summary>Raw Error details</summary>
-        {message}
-      </details>
-    </div>
   );
 }
 

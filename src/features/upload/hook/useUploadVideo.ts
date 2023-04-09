@@ -34,7 +34,10 @@ function uploadVideo({ index_id, file }: UploadVideoParams) {
         'Content-Type': 'multipart/form-data',
       },
     })
-    .then((res) => res.data);
+    .then(
+      (res) => res.data,
+      (error) => Promise.reject(error.response.data)
+    );
 }
 
 export default useUploadVideo;

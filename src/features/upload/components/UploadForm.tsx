@@ -1,9 +1,10 @@
 import { ChangeEventHandler, useRef } from 'react';
 import useUploadVideo from '../hook/useUploadVideo';
+import { ErrorUI } from '@/features/browse/components/ErrorUI';
 
 function UploadForm() {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { mutateAsync, isLoading } = useUploadVideo();
+  const { mutateAsync, isLoading, error } = useUploadVideo();
 
   const handleUpload: ChangeEventHandler<HTMLInputElement> = async (event) => {
     if (!event.target.files) {
@@ -21,6 +22,7 @@ function UploadForm() {
       inputRef.current.value = '';
     }
   };
+  console.log(error);
 
   return (
     <>
@@ -35,6 +37,7 @@ function UploadForm() {
           ref={inputRef}
         />
       </label>
+      {error && <ErrorUI message={error.message} />}
     </>
   );
 }
