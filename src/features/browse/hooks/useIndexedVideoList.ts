@@ -29,11 +29,6 @@ function useIndexedVideoList({ indexId }: UseIndexedVideoList) {
       }
 
       return result.flatMap((r) => r.data);
-    },
-    {
-      enabled: false,
-      // TODO: remove this option after upload feature. this assumes no mutations occur
-      staleTime: Infinity,
     }
   );
 

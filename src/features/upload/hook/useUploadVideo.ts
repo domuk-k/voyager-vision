@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { PublicAPIError, UploadVideoResponse } from '@/pages/api/types';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 type UploadVideoParams = {
   index_id: string;
@@ -8,12 +8,14 @@ type UploadVideoParams = {
 };
 
 function useUploadVideo() {
+  const queryClient = useQueryClient();
+
   return useMutation<UploadVideoResponse, PublicAPIError, UploadVideoParams>(
     ['upload'],
     uploadVideo,
     {
       onSuccess: () => {
-        console.log('upload success');
+        queryClient.invalidateQueries(['tasks']);
       },
     }
   );
