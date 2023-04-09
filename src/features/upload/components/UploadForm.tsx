@@ -25,10 +25,11 @@ function UploadForm() {
   return (
     <>
       <label>
-        <span>Upload Video</span>
+        <div>{isLoading ? 'Uploading...' : 'Upload Video'}</div>
         <input
           accept="video/*"
           type="file"
+          className="invisible"
           onChange={handleUpload}
           disabled={isLoading}
           ref={inputRef}
