@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { ListVideosResponse, PublicAPIError, Video } from '@/pages/api/types';
-import fetcher from '@/libs/fetcher';
 import range from '@/utils/range';
+import axios from 'axios';
 
 interface UseIndexedVideoList {
   indexId: string;
@@ -31,6 +31,7 @@ function useIndexedVideoList({ indexId }: UseIndexedVideoList) {
       return result.flatMap((r) => r.data);
     },
     {
+      enabled: false,
       // TODO: remove this option after upload feature. this assumes no mutations occur
       staleTime: Infinity,
     }
@@ -45,6 +46,6 @@ function useIndexedVideoList({ indexId }: UseIndexedVideoList) {
 export default useIndexedVideoList;
 
 const fetchVideoList = ({ indexId, page }: { indexId: string; page: number }) =>
-  fetcher<ListVideosResponse>(
+  axios<ListVideosResponse>(
     `api/indexes/${indexId}/videos?page=${page}&page_limit=${MAXIUM_PAGE_LIMIT}`
-  );
+  ).then((res) => res.data);
