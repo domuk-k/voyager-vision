@@ -32,3 +32,13 @@ export interface ListVideosResponse {
   data: Video[];
   page_info: PageInfo;
 }
+
+export interface UploadVideoParams {
+  index_id: string;
+  video_file: File;
+  language?: string;
+}
+
+export interface UploadVideoResponse {
+  _id: string;
+}
