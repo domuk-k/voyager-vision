@@ -50,7 +50,7 @@ type IndexingStatus =
   | 'ready'
   | 'failed';
 
-export interface IndexingTask {
+export interface ProcessingTask {
   _id: string;
   index_id: string;
   status: IndexingStatus;
@@ -66,7 +66,16 @@ export interface IndexingTask {
   };
 }
 
+export interface TaskProcess {
+  percentage: number;
+  remain_seconds: number;
+}
+
 export interface ListIndexingTasksResponse {
-  data: IndexingTask[];
+  data: ProcessingTask[];
   page_info: PageInfo;
+}
+
+export interface GetProcessingTaskResponse extends ProcessingTask {
+  process?: TaskProcess;
 }
