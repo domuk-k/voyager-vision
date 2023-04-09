@@ -42,3 +42,31 @@ export interface UploadVideoParams {
 export interface UploadVideoResponse {
   _id: string;
 }
+
+type IndexingStatus =
+  | 'validating'
+  | 'pending'
+  | 'indexing'
+  | 'ready'
+  | 'failed';
+
+export interface IndexingTask {
+  _id: string;
+  index_id: string;
+  status: IndexingStatus;
+  created_at: string;
+  updated_at: string;
+  estimated_time: string;
+  metadata: {
+    filename: string;
+    duration: number;
+
+    width: number;
+    height: number;
+  };
+}
+
+export interface ListIndexingTasksResponse {
+  data: IndexingTask[];
+  page_info: PageInfo;
+}
