@@ -11,7 +11,7 @@ function IndexedVideoList({ indexId }: IndexedVideoListProps) {
   });
 
   if (status === 'loading') {
-    return null;
+    return <div>loading...</div>;
   }
 
   if (status === 'error') {
