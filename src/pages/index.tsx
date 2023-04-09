@@ -12,7 +12,9 @@ export default function Home() {
       <AppHeader />
       <section className="grid grid-cols-[150px_1fr]">
         <section></section>
-        <IndexedVideoList />
+        <section>
+          <IndexedVideoList indexId={'641d53987b1f2230dfcd6c03'} />
+        </section>
       </section>
     </main>
   );
