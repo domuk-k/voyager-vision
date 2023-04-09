@@ -1,5 +1,6 @@
 import AppHeader from '@/components/AppHeader';
 import IndexedVideoList from '@/features/browse/components/IndexedVideoList';
+import UploadForm from '@/features/upload/components/UploadForm';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -11,7 +12,9 @@ export default function Home() {
     >
       <AppHeader />
       <section className="grid grid-cols-[150px_1fr]">
-        <section></section>
+        <section>
+          <UploadForm />
+        </section>
         <section>
           <IndexedVideoList indexId={'641d53987b1f2230dfcd6c03'} />
         </section>
