@@ -43,7 +43,7 @@ export interface UploadVideoResponse {
   _id: string;
 }
 
-type IndexingStatus =
+type TaskProcessing =
   | 'validating'
   | 'pending'
   | 'indexing'
@@ -53,7 +53,7 @@ type IndexingStatus =
 export interface ProcessingTask {
   _id: string;
   index_id: string;
-  status: IndexingStatus;
+  status: TaskProcessing;
   created_at: string;
   updated_at: string;
   estimated_time: string;
